@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>LODSPeaKr Basics</title>
+    <title>Linked Development</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -50,28 +50,50 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">{{lodspk.title}}</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="classes">Classes</a></li>
-              <li><a href="namedGraphs">Named Graphs</a></li>
-            </ul>
-            <form class="navbar-search pull-left" action="">
-              <input type="text" data-provide="typeahead" class="typeahead search-query span2" placeholder="Search"/>
-            </form>
-          </div><!--/.nav-collapse -->
+             <div class="nav-collapse">
+               <ul class="nav">
+                 <li class="active"><a href="/">Home</a></li>
+                 <li><a href="/snorql/">SPARQL</a></li>
+                 <li><a href="/browse.html">Browse</a></li>
+                <li><a href="/about.html">Docs</a></li>
+               </ul>
+             </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-      <img src="img/lodspeakr_logotype.png" style="opacity: 0.1; position: absolute; right:0px; top:60%"/>
+      <img src="img/linked_development_logotype.png" style="opacity: 0.1; position: absolute; right:0px; top:60%"/>
       <h1>Welcome to linked development</h1>
       <p></p>
       <div class="span5 well">
-      <h2>Under development</h2>
-	The Linked Development platform is currently under active development. Check back for changes soon. Check <a href="/snorql/">/snorql/</a> to search available publications data here already.
+      <h2>About Linked Development</h2>
+      This platform has been developed as an incubator for a number of linked datasets of value to the International Development community.
+      <p>
+      It currently hosts data from:
+      <ul>
+       <li><a href="http://r4d.dfid.gov.uk" target="_blank">Research for Development</a></li>
+       <li><a href="http://www.eldis.org" target="_blank">ELDIS</a></li>
+      </ul>
+      And draws upon a number of other key datasets.
+      <p>
+      There are three ways to access the data here:
+      <ul>
+          <li>Via SPARQL - the query language for linked data</li>
+          <li>By dereferencing selected URIs - giving access to human and machine-readable data</li>
+          <li>Via a simple API (coming soon) - based on the IDS API for accessing data on publications</li>
+     </ul>
       </div>
+      
+      <div class="span5 well">
+        <h2>Why linked data?</h2>
+        Linked data is an approach to publishing data on the web. Linked data uses URIs to identify entities in a dataset, and returns machine-readable data when those URIs are looked up (dereferenced). When different datasets use shared identifiers to represent items and properties then it becomes easier to combine datasets from difference sources. 
+        <p>
+        Unlike conventional databases or spreadsheet formats, which constrain how data can be represented, forcing it into columns, rows and pre-defined schema, linked data uses a graph structure to represent data, making it very extensible. That means that when data is brought together from different sources it does not have to adopt a lowest common denominator approach to data integration, but allows flexibility in how data is stored and combined. 
+    
+        </div>
+        
+        
     </div>
   </body>
 </html>
