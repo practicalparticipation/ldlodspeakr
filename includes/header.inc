@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>LODSPeaKr Basic Menu</title>
+    <title>Linked Development</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -55,16 +55,14 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="{{lodspk.home}}">{{lodspk.title}}</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li><a href="{{lodspk.home}}">Home</a></li>
-              <li><a href="{{lodspk.home}}classes">Classes</a></li>
-              <li><a href="{{lodspk.home}}namedGraphs">Named Graphs</a></li>
-            </ul>
-            <form class="navbar-search pull-left" action="">
-              <input type="text" data-provide="typeahead" class="typeahead search-query span2" placeholder="Search"/>
-            </form>
-          </div><!--/.nav-collapse -->
+             <div class="nav-collapse">
+               <ul class="nav">
+                 <li class="active"><a href="/">Home</a></li>
+                 <li><a href="/snorql/">SPARQL</a></li>
+                 <li><a href="/browse.html">Browse</a></li>
+                <li><a href="/about.html">Docs</a></li>
+               </ul>
+             </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
