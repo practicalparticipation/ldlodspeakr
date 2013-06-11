@@ -1,0 +1,6 @@
+SELECT * WHERE {
+  ?resource dcterms:publisher ?publisher.
+  ?resource dcterms:title ?title.
+  OPTIONAL { ?resource dcterms:date ?date. }
+  FILTER(?publisher = <{{uri}}>)
+} ORDER BY DESC(?date)

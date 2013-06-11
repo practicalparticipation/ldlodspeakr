@@ -1,0 +1,8 @@
+SELECT DISTINCT ?resource ?title WHERE {
+  {
+     ?resource a bibo:Article.
+     ?resource dcterms:title ?title.
+  }
+}order by ?resource
+LIMIT 100 OFFSET {{lodspk.args.arg1|default:0}}
+# {{lodspk.maxResults}}

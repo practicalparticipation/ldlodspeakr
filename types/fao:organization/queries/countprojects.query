@@ -1,0 +1,4 @@
+SELECT COUNT(?project) as ?count WHERE {
+   ?project a dbo:Project.
+   <{{uri}}> dcterms:isPartOf ?project.
+}

@@ -1,0 +1,31 @@
+SELECT * WHERE {
+   GRAPH ?g {
+      ?resource dcterms:title ?title.
+      OPTIONAL { ?resource dcterms:abstract ?abstract. }
+      
+      # Language
+      OPTIONAL { ?resource dcterms:language ?language. }
+      
+      # Identifiers
+      OPTIONAL { ?resource dcterms:identifier ?identifier. }
+      
+      # SeeAlso
+      OPTIONAL { ?resource rdfs:seeAlso ?document. }
+      
+      # Date
+      OPTIONAL { ?resource dcterms:date ?date.}
+      
+      # Publisher Information
+      OPTIONAL {
+          ?resource dcterms:publisher ?publisher.
+          OPTIONAL { ?publisher foaf:name ?publisherName. }
+      }
+      
+      # URI to the document
+      OPTIONAL {
+          ?resource bibo:uri ?uri.
+      }
+      
+      FILTER(?resource = <{{uri}}>)
+   }
+  }

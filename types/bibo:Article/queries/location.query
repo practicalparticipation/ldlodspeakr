@@ -1,0 +1,26 @@
+SELECT ?coverage ?coverageTitle (((?maxLat - ?minLat)/2)+?minLat) as ?lat (((?maxLon - ?minLon)/2)+?minLon) as ?lon WHERE {
+        ?resource dcterms:coverage ?coverage.
+        # Handle for different ways in which coverage may be labelled. 
+        { 
+         ?coverage rdfs:label ?coverageTitle.
+        } UNION {
+         ?coverage fao:nameList ?coverageTitle.
+         FILTER(lang(?coverageTitle) = 'en' || lang(?coverageTitle) = "")
+        }
+
+ ?coverage fao:codeISO2 ?iso2. 
+ ?location fao:codeISO2 ?locationISO.
+ FILTER(str(?iso2) = str(?locationISO))
+
+ ?location fao:hasMaxLatitude ?maxLat.
+ ?location fao:hasMinLatitude ?minLat.
+
+ ?location fao:hasMaxLongitude ?maxLon.
+ ?location fao:hasMinLongitude ?minLon.
+
+     FILTER(?resource = <{{uri}}>)
+} 
+
+
+
+

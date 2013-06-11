@@ -1,0 +1,13 @@
+SELECT * WHERE {
+	 
+          ?resource dcterms:subject ?subject.
+          ?subject rdfs:label ?subjectTitle. 
+          OPTIONAL {
+              ?subject dcterms:identifier ?subjectID.
+          }
+     FILTER(?resource = <{{uri}}>)
+}
+
+
+
+

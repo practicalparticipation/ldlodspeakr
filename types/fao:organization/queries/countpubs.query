@@ -1,0 +1,4 @@
+SELECT COUNT(?resource) as ?count WHERE {
+  ?resource dcterms:publisher ?publisher.
+  FILTER(?publisher = <{{uri}}>)
+} 

@@ -1,0 +1,15 @@
+SELECT ?coverage ?coverageTitle WHERE {
+        ?resource dcterms:coverage ?coverage.
+        # Handle for different ways in which coverage may be labelled. 
+        { 
+         ?coverage rdfs:label ?coverageTitle.
+        } UNION {
+         ?coverage fao:nameList ?coverageTitle.
+         FILTER(lang(?coverageTitle) = 'en' || lang(?coverageTitle) = "")
+        }
+     FILTER(?resource = <{{uri}}>)
+} 
+
+
+
+

@@ -1,0 +1,14 @@
+SELECT DISTINCT ?resource ?label WHERE {
+    GRAPH ?g {
+    	?x a ?resource .
+ 	OPTIONAL{
+	  {
+		?resource dcterms:title ?label.
+	  } UNION {
+		?resource rdfs:label ?label.
+	  } 
+	}
+    }
+  FILTER(regex(?g,"linked-development")) # Only get things in the Linked Development graphs
+}order by ?resource
+LIMIT {{lodspk.maxResults}}

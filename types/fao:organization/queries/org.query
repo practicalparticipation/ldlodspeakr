@@ -1,0 +1,26 @@
+SELECT * WHERE {
+  ?org foaf:name ?name.
+  
+  OPTIONAL { ?org vcard:hasAddress ?vcard. 
+    ?vcard vcard:country ?country.
+    OPTIONAL { ?vcard vcard:streetAddress ?streetAddress. }
+    OPTIONAL { ?vcard vcard:locality ?locality. }
+    OPTIONAL { ?vcard vcard:postalCode ?postcode. }
+  }
+ 
+  OPTIONAL { ?org dcterms:type ?orgTypeID.
+     ?orgTypeID rdfs:label ?orgType. }
+
+  OPTIONAL { ?org foaf:nick ?nickName. }
+
+  OPTIONAL { ?org dcterms:description ?description. }
+
+  OPTIONAL { ?org foaf:homepage ?homepage. }
+
+  OPTIONAL { ?org dcterms:identifier ?identifier. }
+
+  OPTIONAL { ?org dcterms:created ?recordCreated. }
+
+  FILTER(?org = <{{uri}}>)
+
+}

@@ -1,0 +1,19 @@
+{%include "../../includes/header.inc"%}
+    <div class="container-fluid">
+    <h1>Articles</h1>
+        {{lodspk.args.arg1|Add:1}} - {{lodspk.args.arg1|Add:100}} of {{first.count.count.value}} articles.
+	<ul>
+    {% for row in models.main %}
+        <li><a href="{{ row.resource.value }}">{{row.title.value}}</a></li>
+    {% endfor %}
+      </ul>
+{%if lodspk.args.arg1 > 1 %}
+  <a href="{{base.baseUrl}}/outputs/offset/{{lodspk.args.arg1|Subtract:100}}">Previous Page</a> -
+{%endif%}
+  <a href="{{base.baseUrl}}/outputs/offset/{{lodspk.args.arg1|Add:100}}">Next Page</a> 
+
+    </div>
+
+
+  </body>
+</html>

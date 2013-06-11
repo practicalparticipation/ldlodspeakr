@@ -1,0 +1,72 @@
+{%include "../../includes/header.inc"%} 
+
+    <div class="container-fluid">
+    <h1>[Publication] {{first.article.title.value}}</h1>
+
+    Taken from {{first.article.g.value}}. 
+<br clear="all"/>
+
+<div class="col-left">
+  <table class="table table-striped" about="{{uri}}">
+    <tr>
+	<td><strong>Published:</strong></td><td>{{first.article.date.value|date:"jS F Y"}}</td>
+    </tr>
+{%if first.article.publisherName %}
+    <tr>
+	<td><strong>Publisher:</strong></td><td><a href="{{first.article.publisher.value}}">{{first.article.publisherName.value}}</a></td>
+    </tr>
+{%endif%}
+    <tr>
+	<td><strong>Abstract:</strong></td><td>{{first.article.abstract.value|safe}}</td>
+    </tr>
+{%if first.article.uri %}
+    <tr>
+	<td><strong>Access:</strong></td><td><A href="{{first.article.uri.value}}" alt="{{first.article.title.value}}" target="_blank">{{first.article.uri.value}}</a></td>
+    </tr>
+{%endif%}
+{%if first.article.document %}
+    <tr>
+	<td><strong>Access:</strong></td><td><A href="{{first.article.document.value}}" alt="{{first.article.title.value}}" target="_blank">{{first.article.document.value}}</a></td>
+    </tr>
+{%endif%}
+     <tr>
+	<td><strong>Subjects:</strong></td>
+ 		<td>
+		{% for subject in models.subjects %}
+			<A href="{{subject.subject.value}}">{{subject.subjectTitle.value}}</a><br/>
+		{%endfor%}
+		</td>
+    </tr>
+     <tr>
+	<td><strong>Creators:</strong></td>
+ 		<td>
+		{% for author in models.creator %}
+			{{author.creator.value}}<br/>
+		{%endfor%}
+		</td>
+    </tr>
+     <tr>
+	<td><strong>Language:</strong></td><td>{{first.article.language.value}}</td>
+    </tr>
+
+   </table>
+</div>
+<div class="col-right">
+{{models.article|D3WordCloud:"abstract,width=300,height=200"}}
+
+<strong>Coverage</strong>
+<ul>
+{% for coverage in models.coverage %}
+   <li><A href="{{coverage.coverage.value}}">{{coverage.coverageTitle.value}}</a> 
+{%endfor%}
+</ul>
+{%if first.location.lat.value %}
+{{models.location|GoogleMaps:"lat,lon,coverageTitle,width=250,height=200"}}
+{%endif%}
+</div>
+
+ 
+    </div>    
+    
+  </body>
+</html>

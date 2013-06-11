@@ -1,0 +1,71 @@
+{%include "../../includes/header.inc"%}
+    <div class="container-fluid">
+    <h1>[Organisation] {{first.org.name.value}}</h1>
+
+<div class="col-left">
+    <table class="table table-striped" about="{{uri}}">
+	<tr>
+		<td><strong>Description</strong></td>
+		<td>{{first.org.description.value|safe}}</td>
+	</tr>
+ {%if first.org.homepage %}
+	<tr>
+		<td><strong>Homepage</strong></td>
+		<td><a href="{{first.org.homepage.value}}">{{first.org.homepage.value}}</a></td>
+	</tr>
+ {%endif%}
+ {%if first.org.country %}
+
+	<tr>
+		<td><strong>Office</strong></td>
+		<td>
+			{% if first.org.streetAddress %}{{first.org.streetAddress.value}}, <br/>{%endif%}
+			{% if first.org.locality %}{{first.org.locality.value}},<br/> {%endif%}
+			{% if first.org.postcode %}{{first.org.postcode.value}},<br/> {%endif%}
+			{{first.org.country.value}}</td>
+	</tr>
+ {%endif%}
+ {%if first.org.nick %}
+	<tr>
+		<td><strong>Acronymn</strong></td>
+		<td>{{first.org.nick.value}}</td>
+	</tr>
+ {%endif%}
+    </table>
+
+    <table class="table table-striped" about="{{uri}}">
+	<tr>
+		<th width="50%">Publications ({{first.countpubs.count.value|default:0}})</th>
+		<th width="50%">Projects ({{first.countprojects.count.value|default:0}})</th>
+	</tr>
+	<tr>
+		<td>
+		<ul>
+		{%for publication in models.pubs %}
+			<li>[{{publication.date.value|date:"M Y"}}] <a href="{{publication.resource.value}}">{{publication.title.value}}</a> </li>
+		{%endfor%}
+		</ul>
+		</td>
+
+		<td>
+		</td>
+	</tr>
+   </table>
+
+   Organisation record created/updated: {{first.org.recordCreated.value|date:"d/m/Y"}}. 
+</div>
+<div class="col-right">
+<img src="http://maps.googleapis.com/maps/api/staticmap?size=250x250&maptype=roadmap&sensor=false&markers=color:blue%7Clabel:L%7C{{first.org.postalCode.value}},{{first.org.locality.value}},{{first.org.country.value}}"/>
+
+{% if first.themes.theme %}
+<h3>Thematic focus</h3>
+(Based on publications in Linked Development)<br/>
+{{models.themes|D3WordCloud:"theme,width=250,height=250"}}
+{% endif%}
+</div>
+
+
+    </div>    
+   
+  </body>
+</html>

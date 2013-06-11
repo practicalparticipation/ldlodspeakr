@@ -1,0 +1,10 @@
+SELECT * WHERE {
+	{ 
+           ?resource dcterms:creator ?creator. 
+           } UNION { 
+           ?resource dcterms:creator ?creatorURI. 
+           ?creatorURI foaf:name ?creator.
+           }
+    FILTER(isLiteral(?creator))
+     FILTER(?resource = <{{uri}}>)
+}

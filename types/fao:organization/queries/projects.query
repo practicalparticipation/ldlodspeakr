@@ -1,0 +1,4 @@
+SELECT * WHERE {
+  <{{uri}}> dcterms:isPartOf ?project.
+  ?project a dbo:Project.
+}

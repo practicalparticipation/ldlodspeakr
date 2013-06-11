@@ -1,0 +1,3 @@
+SELECT count(?article) as ?count WHERE {
+  ?article a bibo:Article.
+}
