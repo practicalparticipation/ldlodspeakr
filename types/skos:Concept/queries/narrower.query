@@ -1,0 +1,7 @@
+SELECT * WHERE {
+   <{{uri}}> skos:narrower ?theme.
+   ?theme a skos:Concept.
+   ?theme rdfs:label ?label.
+   ?theme skos:notation ?identifier.
+}
+

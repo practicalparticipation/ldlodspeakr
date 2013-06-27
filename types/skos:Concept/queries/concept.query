@@ -1,0 +1,11 @@
+SELECT * WHERE {
+   ?theme a skos:Concept.
+   ?theme rdfs:label ?label.
+   ?theme skos:notation ?identifier.
+
+   OPTIONAL { ?theme skos:inScheme ?scheme. 
+   ?scheme rdfs:label ?schemeLabel. 
+   }
+   FILTER(?theme = <{{uri}}>)
+
+}

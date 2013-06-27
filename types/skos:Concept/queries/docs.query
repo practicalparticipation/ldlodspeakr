@@ -1,0 +1,6 @@
+SELECT * WHERE {
+  ?article dcterms:subject <{{uri}}>.
+  ?article a bibo:Article.
+  ?article dcterms:title ?title.
+  ?article dcterms:date ?date. 
+} ORDER BY DESC(?date)

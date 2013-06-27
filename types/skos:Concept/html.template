@@ -1,0 +1,43 @@
+{%include "../../includes/header.inc"%}
+    <div class="container-fluid">
+    <h1>Theme : {{first.concept.label.value}}</h1>
+
+   <table class="table table-striped" about="{{uri}}">
+	<tr>
+		<td><strong>Scheme</strong></td>
+		<td>{{first.concept.schemeLabel.value}}</td>
+        </tr>
+    </table>
+    <table class="table table-striped">
+	<thead>
+		<th>Broader concepts</th>
+		<th>Narrower concepts</th>
+	</thead>
+	<tr>
+		<td>
+		{%for theme in models.broader %}
+			<a href="{{theme.theme.value}}">{{theme.label.value}}</a><br/>
+		{%endfor%}
+
+		</td>
+		<td>
+		{%for theme in models.narrower %}
+			<a href="{{theme.theme.value}}">{{theme.label.value}}</a><br/>
+		{%endfor%}
+		</td>
+        </tr>
+    </table>
+
+    <h3>Related documents</h3>
+    <ul>
+    {%for article in models.docs %}
+      <li>[{{article.date.value|date:"m/Y"}}] <a href="{{article.article.value}}">{{article.title.value}}</a></li>
+
+    {% endfor %}
+    </ul>
+
+
+    </div>    
+    
+  </body>
+</html>
