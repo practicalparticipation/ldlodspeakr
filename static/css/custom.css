@@ -8,3 +8,10 @@
     float:right;
   }
 
+
+.sidebar{
+      position: fixed;
+      top: 60px;
+      left: auto;
+      right: auto;
+}
