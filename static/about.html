@@ -56,9 +56,12 @@
        <div class="row">
          <div class="span3 sidebar" data-spy="affix">
            <ul class="nav nav-list sidenav affix">
-             <li><a href="#access"><i class="icon-chevron-right"></i> Access</a></li>
-             <li><a href="#model"><i class="icon-chevron-right"></i> Publications</a></li>
-             <li><a href="#interfaces"><i class="icon-chevron-right"></i> Themes</a></li>
+             <li><a href="#access"><i class="icon-chevron-right"></i> Overview</a></li>
+             <li><a href="#model"><i class="icon-chevron-right"></i> Data and model</a></li>
+             <li><a href="#interfaces"><i class="icon-chevron-right"></i> Interfaces</a></li>
+             <li><a href="#sparql"><i class="icon-chevron-right"></i> SPARQL</a></li>
+             <li><a href="#api"><i class="icon-chevron-right"></i> API</a></li>
+             <li><a href="#browse"><i class="icon-chevron-right"></i> Browse</a></li>
            </ul>
          </div>
          <div class="span9 offset3">
@@ -72,7 +75,14 @@
            </div>
            <p class="lead">Linked Development is a prototype platform to connect up different datasets from research and practice in international development using <a href="http://en.wikipedia.org/wiki/Linked_data">Linked Open Data principles</a>.</p>
            
-          
+           <p>At present the platform hosts data from:
+                <ul>
+                   <li><a href="http://r4d.dfid.gov.uk" target="_blank">Research for Development (R4D)</a> - with details of research publications and projects funded by the UK Department for International Development</li>
+                   <li><a href="http://www.eldis.org" target="_blank">ELDIS</a> - an online information service hosted by the <a href="http://ids.ac.uk">Institute of Development Studies</a> providing free access to relevant, up-to-date and diverse research on international development issues.</li>
+                  </ul>
+           </p>
+           
+           <p>The data on the platform is regularly updated from these sources. Further work to integrate additional sources is ongoing.</p>
          </section>
 
          <!-- Linked Data Models
@@ -84,23 +94,139 @@
             <p class="lead">At present the majority of content hosted on Linked Development consists of meta-data on research publications. </p>
             
             <p>This is drawn from a number of different sources, but is generally modelled using a model based on <a href="http://agris.fao.org/agris-rdf-properties">AGRIS RDF Properties</a>, building on the recommendations from the <a href="http://aims.fao.org/lode/bd">LODE BD - Linked Open Data Enabled Bibliographic Data</a> project.</p>
-
+            
+            <h3>Example resources</h2>
+            <p>The SNORQL browser makes it easy to explore the data structures held on the platform. You can click through the examples below to navigate the data held.
+            <ul>
+                <li><a href="/snorql/?describe=http%3A%2F%2Flinked-development.org%2Fr4d%2Foutput%2F10583%2F">Example R4D publication</a></li>  
+                <li><a href="/snorql/?describe=http%3A%2F%2Flinked-development.org%2Fr4d%2Fproject%2F3650%2F">Example project details from R4D</a></li>
+                <li><a href="/snorql/?describe=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_3055">Example Agrovoc concept (used in R4D)</a></li>
+                <li><a href="/snorql/?describe=http%3A%2F%2Flinked-development.org%2Feldis%2Foutput%2FA64840%2F">Example ELDIS publication</a></li>
+                <li><a href="/snorql/?describe=http%3A%2F%2Flinked-development.org%2Feldis%2Fthemes%2FC595%2F">Example ELDIS theme</a></li>
+            </ul>
+            </p>
+            <h3>Note on data models</h3>
+            <p>
+            Note that there may be slight differences between the models. In particular:
+            <ul>
+                <li>The two datasets use different categorisation schemes (represented as separate <a href="/snorql/?query=SELECT+DISTINCT+%3Fscheme+WHERE+%7B%0D%0A++%3Fscheme+a+skos%3AConceptScheme.%0D%0A%7D">skos:ConceptScheme</a>s) for categorising the subject and geographical coverage of resources. Mappings between these may be introduced in future.</li>
+                <li>The <a href="http://aims.fao.org/standards/agrovoc/about">agrovoc</a> and <a href="fao.org/countryprofiles/geoinfo/geopolitical/resource/">fao geography</a> concept schemes used by R4D use skos:prefLabel and <a href="http://www.fao.org/countryprofiles/geoinfo/geopolitical/resource/nameList">fao:nameList</a> properties for titles, whereas ELDIS uses rdfs:label. A lite version of the Agrovoc vocabulary has been imported into the triple store, as have fao country profiles. 
+                <li>Creators (authors) are attached to R4D via blank nodes on the dcterms:creator property of a publication, but directly to ELDIS publications.</li>
+            </ul>    
+            </p>
 
           </section>
           
-          <!-- Intefaces
+          <!-- Interfaces
             ================================================== -->
             <section id="interfaces">
               <div class="page-header">
                 <h1>3. Interfaces</h1>
               </div>
               <p class="lead">Linked Development is trialling a range of interface to facilitate access to Linked Data for international development. These include a <A href="#sparql">SPARQL endpoint</a>, <a href="#browse">Browse interface</a> and <a href="#api">an API</a> based on the <a href="http://api.ids.ac.uk">Institute for Development Studies open api</a>.</p>
-
+                 <p>Further details on how to use these can be found below.</p>
 
             </section>
 
+             <!-- SPARQL
+                ================================================== -->
+                <section id="sparql">
+                  <div class="page-header">
+                    <h1>4. SPARQL</h1>
+                  </div>
+                  <p class="lead">A SPARQL endpoint can be found at <a href="/sparql">/sparql</a>, with a user-friendly SPARQL browser at <a href="/snorql">/snorql</a>.</p>
+                  <p>SPARQL is a rich query language for Linked Data. Using SPARQL you can write queries to access any of the data held in the Linked Development data store. You can <a href="http://en.wikipedia.org/wiki/SPARQL">read more about SPARQL here</a>.</p>
+                  <p>The endpoint is provided by Virtuoso, and supports most SPARQL 1.1 features</p>
+                    
+
+                </section>          
                      
+                <!-- API
+                   ================================================== -->
+                   <section id="api">
+                     <div class="page-header">
+                       <h1>5. API</h1>
+                     </div>
+                     <p class="lead">The Linked Development API is <a href="http://api.ids.ac.uk/docs/">a clone of the IDS API</a></p>
+                     <p>It has been designed to allow applications written for the IDS API to be simply modified to talk to a large collection of documents and resources drawn from across the datasets including in Linked Development.</p>
                      
+                     <h3>Accessing</h3>
+                     <p>The API is called using the following format:
+                     <pre>/openapi/{graph}/{function}/{object}/{parameter}/?{query}</pre>
+                     where {graph} is one of 'all' (to search all available datasets), or 'eldis' or 'r4d' to restrict results to a given dataset.
+                     </p>
+                     <p>
+                         For example <a href="/openapi/r4d/search/documents/short?country=ZA">/openapi/r4d/search/documents/short?country=ZA</a> will fetch the short version of document records which record coverage of South Africa (ISO country code ZA).
+                     </p>
+                     <h3>Implemented features</h3>
+                     <p>
+                      <ul>
+                          <li><strong>Paging</strong> - using the ?num_results and ?start_offset URL paramters.
+                          <li><strong>Response format selection</strong> - currently providing json and html. 
+                          <li><strong>Short or full results</strong> - substitute 'full' for 'short' in examples below to get full results. 
+                      </ul>
+                      A number of features are not yet fully implemented, including xml result formats, result counts (in some cases), and prev_page and next_page links. Please report any urgently required features <a href="https://github.com/practicalparticipation/ldapi/issues">on the GitHub issue tracker</a> for the project.
+                     </p>
+                     <h3>Available services</h3>
+                     <h4>get_all</h4>
+                      <p>
+                          <ul>
+                              <li><strong>Themes</strong> - e.g. <a href="/openapi/eldis/get_all/themes/short">/openapi/eldis/get_all/themes/short</a></li>
+                              <li><strong>Documents</strong> - e.g. <a href="/openapi/r4d/get_all/documents">/openapi/r4d/get_all/documents</a></li>
+                              <li><strong>Regions</strong> - e.g. <a href="/openapi/all/get_all/regions">/openapi/all/get_all/regions</a></li>
+                              <li><strong>Countries</strong> - e.g. <a href="/openapi/all/get_all/countries">/openapi/all/get_all/countries</a></li>
+                        </ul>
+                     </p>
+                                  
+                     <h4>search</h4>
+                     <p>
+                     The search service behaves similarly to the get_all endpoint, but with the option of adding search parameters for:
+                     <ul>
+                         <li><strong>q</strong> - a free text query on titles and abstracts. E.g.  <a href="/openapi/r4d/search/documents/full?q=linked%20data">/openapi/r4d/search/documents/full?q=linked data</a>.</li>
+                         <li><strong>country</strong> - searching by ISO2 country code, or internal ELDIS identifier - e.g. <a href="/openapi/r4d/search/documents/full?country=GH">/r4d/search/documents/full?country=GH</a>.</li>
+                         <li><strong>Region</strong> - searching by UN code, or ELDIS identifier - e.g. <a href="/openapi/r4d/search/documents/full?region=UN002">/openapi/r4d/search/documents/full?region=UN002</a>.</li>
+                         <li><strong>Theme</strong> - searching by name, agrovoc, or ELDIS identifier - e.g. <a href="/openapi/eldis/search/documents?theme=C782">/openapi/eldis/search/documents?theme=C782</a>.</li>
+                     </ul>
+                     </p>
+                     <h4>get</h4>
+                     <p>
+                         The get service is used for fetching individual resources by their ELDIS or R4D identifiers. 
+                             
+                         For example: <a href="/openapi/eldis/get/documents/A64559/full">/openapi/eldis/get/documents/A64559/full</a> or <a href="/openapi/r4d/get/documents/173629/full">/openapi/r4d/get/documents/173629/full</a>.
+                     </p>
+                     
+                     <h3>Additional features</h3>
+                     
+                     <h4>IATI Identifier search</h4>
+                     <p>
+                         Taking advantage of information in the R4D dataset on the projects through which research is funded, and additional search parameter is available for documents. For example, <a href="/openapi/r4d/search/documents?iati-identifier=GB-1-114192&num_results=100">/openapi/r4d/search/documents?iati-identifier=GB-1-114192&num_results=100</a> will fetch up to 100 documents associated with the DFID '<a href="http://devtracker.dfid.gov.uk/projects/GB-1-114192/">Programme for Enhancement of Research Information</a>'
+                     </p>
+                     <h4>Linked Data URI</h4>
+                     <p>
+                         Responses include the Linked Data URI of entities included in the results in the linked_data_uri field. 
+                     </p>
+                      
+                      
+                     <h3>Known issues</h3>
+                     <p>
+                         There are currently some performance issues with searches on the /all/ graph.
+                     </p>
+                     
+                     <h3>Source</h3>
+                     <p>The source code for the <a href="https://github.com/practicalparticipation/ldapi/">Linked Development API can be found on GitHub</a>. This is also the place to <a href="https://github.com/practicalparticipation/ldapi/issues">report any bugs or to place feature requests</a>.</p>
+                   </section>          
+
+               <!-- Browse
+               ================================================== -->
+                  <section id="browse">
+                    <div class="page-header">
+                      <h1>6. Browse</h1>
+                    </div>
+                    <p class="lead">Using LODSPEAKR we are creating human and machine readable representations of entities held in Linked Development.</p>
+                    <p>Visit the URI of any entity at Linked-Development.org to see an example.</p>
+
+
+                  </section>          
 
      </div>         
 
