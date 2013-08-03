@@ -201,6 +201,13 @@
                      <p>
                          Taking advantage of information in the R4D dataset on the projects through which research is funded, and additional search parameter is available for documents. For example, <a href="/openapi/r4d/search/documents?iati-identifier=GB-1-114192&num_results=100">/openapi/r4d/search/documents?iati-identifier=GB-1-114192&num_results=100</a> will fetch up to 100 documents associated with the DFID '<a href="http://devtracker.dfid.gov.uk/projects/GB-1-114192/">Programme for Enhancement of Research Information</a>'
                      </p>
+                     <p>
+                        As R4D data splits the research outputs linked to a given IATI identifier into sub-projects, an additional call has been added called 'research_outputs' which shows a list of research outputs for an IATI ID, grouped by their associated project. By default it gives the five most recent research outputs for each project, although this can be altered with the per-project parameter.
+                        
+                        For example <a href="/openapi/r4d/get/research_outputs/GB-1-112681?per_project=3">/openapi/r4d/get/research_outputs/GB-1-203193?per_project=3</a> fetches the research projects and recent outputs associated with with the DFID '<a href="http://devtracker.dfid.gov.uk/projects/GB-1-203193/">Professional Evidence and Applied Knowledge Services</a>' funding stream.
+                         
+                     </p>
+                     
                      <h4>Linked Data URI</h4>
                      <p>
                          Responses include the Linked Data URI of entities included in the results in the linked_data_uri field. 
